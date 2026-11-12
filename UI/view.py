@@ -35,7 +35,7 @@ class View:
         # SEZIONE 1: Intestazione
         self.txt_titolo = ft.Text(value="Analisi Prezzi Carburante", size=38, weight=ft.FontWeight.BOLD)
 
-        # SEZIONE 2: Dropdown + Pulsanti ######################################################
+        # SEZIONE 2: Dropdown + Pulsanti ############################ a ciascuna voce della dropdown è associato un numero 1-12 come chiave
         self.dropdown_mese = ft.Dropdown(
             options=[ft.dropdown.Option(key="1", text="gennaio"),
                      ft.dropdown.Option(key="2", text="febbraio"),
@@ -55,7 +55,7 @@ class View:
             on_select=self.controller.leggi_mese
         )
 
-        pulsante_prezzo = ft.Button(
+        pulsante_prezzo = ft.Button(                                                                                    #siamo qui
             "Prezzo medio",
             tooltip="Verifica il prezzo medio per distributore, nel mese selezionato",
             on_click=self.controller.get_prezzo_medio

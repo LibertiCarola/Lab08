@@ -38,4 +38,4 @@ class PrezzoDAO:
             cursor.close()
             cnx.close()
 
-        return result
+        return result                                                   # restituisce una lista di oggetti

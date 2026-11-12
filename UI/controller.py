@@ -19,11 +19,13 @@ class Controller:
     def leggi_mese(self, e):
         self.mese_selezionato = int(e.control.value)
 
-    def get_prezzo_medio(self, e):
+    def get_prezzo_medio(self, e):                                                                                      # restituisci prezzo medio
+        print('bottone 1 premuto :) => calcola media mensile del prezzo della benzina')
+
         if self.mese_selezionato == 0:
             self._view.show_alert("Selezionare un Mese!")
         else:
-            prezzo_medio = self._model.get_prezzo_medio(self.mese_selezionato)
+            prezzo_medio = self._model.get_prezzo_medio(self.mese_selezionato)                                          # model.get_prezzo_medio => lista di tuple (distributore X, prezzo medio)
             self._view.lista_visualizzazione.controls.clear()
             self._view.lista_visualizzazione.controls.append(
                 ft.Text(f"Il prezzo medio nel mese selezionato è:")
@@ -33,12 +35,15 @@ class Controller:
                     self._view.lista_visualizzazione.controls.append(
                         ft.Text(f"{distributore_media[0]}: {distributore_media[1]:.3f} €/litro")
                     )
+        self._view.lista_visualizzazione.update()
+        self._view.page.update()
 
     def calcola_sequenza(self, e):
+        print('bottone 2 premuto :(')
         if self.mese_selezionato == 0:
             self._view.show_alert("Selezionare un Mese!")
         else:
-            sequenza_ottima, costo = self._model.get_sequenza_ottima(self.mese_selezionato)
+            sequenza_ottima, costo = self._model.get_sequenza_ottima(self.mese_selezionato)                             # model.get_sequenza_ottima
             self._view.lista_visualizzazione.controls.clear()
             self._view.lista_visualizzazione.controls.append(ft.Text(f"La sequenza ottima ha costo {costo:.2f}€ ed è:"))
             for stop in sequenza_ottima:
